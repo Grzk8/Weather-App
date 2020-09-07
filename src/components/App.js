@@ -3,10 +3,6 @@ import './App.css';
 import Form from './Form';
 import WeatherInfo from './WeatherInfo'
 
-const api = {
-  key: '2c401902a18d83e97a3b4870577a0579'
-}
-
 class App extends Component {
 
   state  = {
@@ -24,7 +20,20 @@ class App extends Component {
   }
 
   handleLocationSubmit = e => {
-      e.preventDefault()
+      e.preventDefault();
+
+      const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=2c401902a18d83e97a3b4870577a0579&units=metric`;
+
+      fetch(API)
+      .then(response => {
+        if (response.ok){
+          return response
+        }
+        throw Error ("błąd")
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch (err => console.log(err))
   }
 
   render() {
