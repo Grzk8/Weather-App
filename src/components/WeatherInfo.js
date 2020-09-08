@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const WeatherInfo = (props) => {
 
-    const {location, date, temp, wind, error} = props.weather;
+    const {location, date, name, temp, wind, error, main} = props.weather;
 
     let cont = null;
 
     if(!error && temp) {
         cont = (
-            <div>
-                <h1>{location}</h1>
+            <Fragment>
+                <h1>{name}</h1>
                 <div>{date}</div>
                 <div>temp : {temp}<sup>o</sup>C</div>
                 <div>wind speed: {wind}km/h</div>
-            </div>
+                <div>{main}</div>
+            </Fragment>
         )
     }
 

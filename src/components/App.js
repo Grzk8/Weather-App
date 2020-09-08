@@ -7,9 +7,11 @@ const time = new Date().toLocaleDateString();
 class App extends Component {
   state  = {
     location: '',
+    name: '',
     date: '',
     temp: '',
     wind: '',
+    main: '',
     error: false
   }
 
@@ -37,9 +39,11 @@ class App extends Component {
         this.setState({
           error: false,
           location: this.state.location,
+          name: data.name,
           date: time,
           temp: data.main.temp.toFixed(0),
-          wind: data.wind.speed
+          wind: data.wind.speed,
+          main: data.weather[0].main
         }))
       .catch (err => console.log(err));
       this.setState({
