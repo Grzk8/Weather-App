@@ -8,6 +8,7 @@ class App extends Component {
   state  = {
     location: '',
     name: '',
+    country: '',
     date: '',
     temp: '',
     wind: '',
@@ -21,36 +22,39 @@ class App extends Component {
     })
   }
 
-  handleLocationSubmit = e => {
-      e.preventDefault();
+componentDidUpdate(prevProps, prevState){
+  if (prevState.location !== this.state.location){
 
-      const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=2c401902a18d83e97a3b4870577a0579&units=metric`;
+    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=2c401902a18d83e97a3b4870577a0579&units=metric`;
 
-      fetch(API)
-      .then(response => { 
-        if (response.ok){
-          return response
-        }
-        throw Error ("błąd")
-      })
-  
-      .then(response => response.json())
-      .then(data => 
-        this.setState({
-          error: false,
-          location: this.state.location,
-          name: data.name,
-          date: time,
-          temp: data.main.temp.toFixed(0),
-          wind: data.wind.speed,
-          main: data.weather[0].main
-        }))
-      .catch (err => console.log(err));
+    fetch(API)
+    .then(response => { 
+      if (response.ok){
+        return response
+      }
+      throw Error ("błąd")
+    })
+
+    .then(response => response.json())
+    .then(data => 
       this.setState({
-        error: true,
-        location: this.state.location
-      })
+        error: false,
+        location: this.state.location,
+        name: data.name,
+        date: time,
+        temp: data.main.temp.toFixed(0),
+        wind: data.wind.speed,
+        main: data.weather[0].main,
+        country: data.sys.country
+      }))
+    .catch (err => console.log(err));
+    this.setState({
+      error: true,
+      location: this.state.location
+    })
+
   }
+}
 
   render() {
     return (
@@ -58,7 +62,6 @@ class App extends Component {
           <Form 
           location={this.state.location} 
           change={this.handleInputHange}
-          submit={this.handleLocationSubmit}
           />
           <WeatherInfo weather={this.state}/>
       </div>
