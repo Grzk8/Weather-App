@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 
 const WeatherInfo = (props) => {
 
-    const {location, date, name, temp, wind, error, main, country} = props.weather;
+    const {date, name, temp, wind, error, main, country} = props.weather;
 
     let cont = null;
 
@@ -20,7 +20,7 @@ const WeatherInfo = (props) => {
 
     return(
         <div>
-            {error ? `nie ma ${location}` : cont}
+            {error ? ` ` : cont}
         </div>
     )
 }

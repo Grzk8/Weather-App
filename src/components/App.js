@@ -57,8 +57,20 @@ componentDidUpdate(prevProps, prevState){
 }
 
   render() {
+
+    let style = {
+      backgroundColor: 'lightblue',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+    };
+
+    if (this.state.temp > 30) {
+      style.backgroundColor= 'lightsalmon'
+    }
+ 
     return (
-      <div className="App">
+      <div className="App" style={style}>
           <Form 
           location={this.state.location} 
           change={this.handleInputHange}

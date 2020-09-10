@@ -1,0 +1,12 @@
+.search-bar {
+padding: 15%;
+appearance: none;
+background: none;
+outline: none;
+background-color: rgba(255, 255, 255, 0.5);
+border-radius: 5%;
+}
+
+.App{
+    min-height: 100vh;
+}
