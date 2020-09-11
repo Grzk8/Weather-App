@@ -13,6 +13,8 @@ class App extends Component {
     temp: '',
     wind: '',
     main: '',
+    description: '',
+    icon: '',
     error: false
   }
 
@@ -45,6 +47,8 @@ componentDidUpdate(prevProps, prevState){
         temp: data.main.temp.toFixed(0),
         wind: data.wind.speed,
         main: data.weather[0].main,
+        description: data.weather[0].description,
+        icon: data.weather.id,
         country: data.sys.country
       }))
     .catch (err => console.log(err));
