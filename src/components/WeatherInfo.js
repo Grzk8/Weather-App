@@ -3,11 +3,11 @@ import './App.css';
 
 const WeatherInfo = (props) => {
 
-    const {date, name, temp, wind, error, icon, country, description} = props.weather;
+    const {date, name, temp, wind, error, icon, country, main, description} = props.weather;
     let cont = null;
 
     // weather icons and condicions
-/*
+
     const icons= ['./assets/broken-clouds.png', './assets/clear.png', './assets/clouds.png', 
                 './assets/few-clouds.png', './assets/mist.png', './assets/rain.png', 
                 './assets/shower-rain.png', './assets/snow.png', './assets/thunderstorm.png',
@@ -45,12 +45,9 @@ const WeatherInfo = (props) => {
     if(description === 'few clouds: 11-25%'){
         icon = require(icons[3])
     };
-*/
-    const icons= 'http://openweathermap.org/img/wn/10d@2x.png';
-    let iconStyle= {
-        backgroundImage: "url('{icons}')",
-    };
 
+    iconStyle = {backgroundImage: {icon}}
+   // let icons = `http://openweathermap.org/img/wn/${icon}@2x.png`
      if(!error && name) {
         cont = (
             <Fragment>
@@ -59,8 +56,7 @@ const WeatherInfo = (props) => {
                 <div className='temp'>temp : {temp}<sup>o</sup>C</div>
                 <div className='wind'>wind speed: {wind}km/h</div>
                 <div className='descripion'>{description}</div>
-                <div className='iconstyle' style ={ { backgroundImage: "url('http://openweathermap.org/img/wn/10d@2x.png')", heigh: '200px', width:'200px', border: '10px solid black', backgroundSize:'cover'} }></div>
-                
+                <div style="iconStyle"></div>
             </Fragment>
         )
     }
@@ -72,4 +68,4 @@ const WeatherInfo = (props) => {
     )
 }
 
-export default WeatherInfo
+export default WeatherInfo;

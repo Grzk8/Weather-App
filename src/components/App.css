@@ -9,10 +9,6 @@ border-radius: 5%;
 
 .App{
     min-height: 100vh;
+
 }
 
-.iconStyle {
-    height: 200px;
-    width: 200px;
-    border: 10px solid black;
-}
