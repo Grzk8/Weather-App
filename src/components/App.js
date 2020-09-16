@@ -63,15 +63,25 @@ componentDidUpdate(prevProps, prevState){
   render() {
 
     let style = {
-      backgroundColor: 'lightblue',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
+      backgroundColor: 'rgba(218, 112, 214, 0.5)',
     };
 
-    if (this.state.temp > 30) {
-      style.backgroundColor= 'lightsalmon'
+    // background change
+    if (this.state.temp < 1) {
+      style.backgroundColor= 'rgba(25, 25, 112)'
     }
+    if (this.state.temp > 10) {
+      style.backgroundColor= 'rgba(135, 206, 235)'
+    }    
+    if (this.state.temp > 20) {
+      style.backgroundColor= 'rgba(34, 139, 34)'
+    }    
+    if (this.state.temp > 30) {
+      style.backgroundColor= 'rgba(255, 228, 181)'
+    }    
+    if (this.state.location.length < 1) {
+      style.backgroundColor= 'rgba(218, 112, 214, 0.5)'
+    }    
  
     return (
       <div className="App" style={style}>
