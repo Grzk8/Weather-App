@@ -21,9 +21,6 @@ const WeatherInfo = (props) => {
 
     let WeatherIcon = BrokenClouds;
 
-    if (main === 'Clouds'){
-        WeatherIcon= Clouds
-    }
     if(main === 'Mist' || 'Smoke' || 'Haze' || 'Dust' || 'Fog' || 'Sand' || 'Ash' || 'Squall' || 'Tornado'){
         WeatherIcon= Mist
     }
@@ -48,24 +45,30 @@ const WeatherInfo = (props) => {
     if (main === 'Clear'){
         WeatherIcon = Clear
     }
+    if (main === 'Clouds'){
+        WeatherIcon= Clouds
+    }
 
      if(!error && name) {
         cont = (
             <Fragment>
                 <div className='location'>{name}  {country}</div>
                 <div className='date'>{date}</div>
-                <img alt= ' ' src={ WeatherIcon } />
-                <div className='temp'>temp : {temp}<sup>o</sup>C</div>
-                <div className='wind'>wind speed: {wind}km/h</div>
-                <div className='descripion'>{description}</div>
-                
+                <div>
+                    <div className='temp col'>{temp}<sup>o</sup>C</div>
+                    <div className='col'> <img  alt= ' ' src={ WeatherIcon } /></div>  
+                </div>
+                <div className='otherValues'>
+                    <div className='descripion'>{description}</div>
+                    <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
+                </div>
             </Fragment>
         )
     }
 
     return(
         <div>
-            {error ? `no weather for ${location} ` : cont}
+            {error ? ` ` : cont}
         </div>
     )
 }

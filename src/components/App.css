@@ -1,18 +1,76 @@
+*{
+    box-sizing: border-box;
+}
 .search-bar {
-padding: 15%;
-appearance: none;
-background: none;
-outline: none;
-background-color: rgba(255, 255, 255, 0.5);
-border-radius: 5%;
+    height: 3em;
+    padding-left: 2em;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0.8em;
+    display: block;
+}
+.search-bar:focus{
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
 .App{
     min-height: 100vh;
 }
-.weatherIcon{
-    height: 300px;
-    width: 300px;
-    border: 2px solid black;
+
+.search-box{
+    width: 4em;
+    padding-top: 1em;
+    padding-left: 20%;
+
 }
 
+.location{
+    padding-top: 1em;
+    color: #fff;
+    font-size: 4em;
+    font-weight: 500;
+    text-align: center;
+    text-shadow: 4px 4px rgba(50, 50, 80, 0.5);
+    font-family: Georgia, Arial, sans-serif;
+}
+.date{
+    padding-top: 1em;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 200;
+    text-align: center;
+    font-style: italic;
+    text-shadow: 1px 1px rgba(50, 50, 80, 0.5);
+}
+.col{
+    width: 50%;
+    padding-top: 3em;
+    float: left;
+}
+.temp{
+    color: #fff;
+    padding-left: 10%;
+    padding-top: 1.5em;
+    font-size: 2.8em;
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 2px 2px rgba(50, 50, 80, 0.5);
+}
+.wind, .descripion{
+    color: #fff;
+    font-size: 1em;
+    font-weight: 200;
+    text-align: center;
+    text-shadow: 2px 2px rgba(50, 50, 80, 0.5);  
+}
+
+.otherValues{
+    margin: 10%;
+    padding-top: 200px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10%;
+    padding-bottom: 50px;
+}
