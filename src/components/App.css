@@ -9,6 +9,10 @@ border-radius: 5%;
 
 .App{
     min-height: 100vh;
-
+}
+.weatherIcon{
+    height: 300px;
+    width: 300px;
+    border: 2px solid black;
 }
 

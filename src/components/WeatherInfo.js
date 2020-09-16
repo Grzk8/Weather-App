@@ -1,69 +1,71 @@
 import React, { Fragment } from 'react';
 import './App.css';
+import BrokenClouds from './assets/broken-clouds.png';
+import Clear from './assets/clear.png';
+import Clouds from './assets/clouds.png';
+import Mist from './assets/mist.png'
+import Rain from './assets/rain.png'
+import ShowerRain from './assets/shower-rain.png'
+import Snow from './assets/snow.png'
+import Thunderstorm from './assets/thunderstorm.png'
+import FewClouds from './assets/few-clouds.png'
+
 
 const WeatherInfo = (props) => {
 
-    const {date, name, temp, wind, error, icon, country, main, description} = props.weather;
+    const {date, name, temp, wind, error, location, country, main, description} = props.weather;
     let cont = null;
+
 
     // weather icons and condicions
 
-    const icons= ['./assets/broken-clouds.png', './assets/clear.png', './assets/clouds.png', 
-                './assets/few-clouds.png', './assets/mist.png', './assets/rain.png', 
-                './assets/shower-rain.png', './assets/snow.png', './assets/thunderstorm.png',
-                ];
+    let WeatherIcon = BrokenClouds;
 
-    let icon = require(icons[5]);
-
-    if(main === 'Clear'){
-        icon = require(icons[1])
-    };
-    if(main === 'Clouds'){
-        icon = require(icons[2])
-    };
+    if (main === 'Clouds'){
+        WeatherIcon= Clouds
+    }
     if(main === 'Mist' || 'Smoke' || 'Haze' || 'Dust' || 'Fog' || 'Sand' || 'Ash' || 'Squall' || 'Tornado'){
-        icon = require(icons[4])
-    };
-    if(description === 'light rain' || 'moderate rain' || 'heavy intensity rain' || 'very heavy rain' || 'extreme rain'){
-        icon = require(icons[5])
-    };
-    if(description === 'freezing rain' || 'light intensity shower rain' || 'shower rain' || 'heavy intensity shower rain' || 'ragged shower rain' ){
-        icon = require(icons[6])
-    };
+        WeatherIcon= Mist
+    }
     if(main === 'Snow'){
-        icon = require(icons[7])
-    };
-    if(main === 'Thunderstorm'){
-        icon = require(icons[8])
-    };
-    if(main === 'Snow'){
-        icon = require(icons[8])
-    };
+        WeatherIcon= Snow
+    }
     if(main === 'Drizzle'){
-        icon = require(icons[6])
-    };
+        WeatherIcon= ShowerRain
+    }
+    if(main === 'Thunderstorm'){
+        WeatherIcon= Thunderstorm
+    }
+    if(description === 'light rain' || 'moderate rain' || 'heavy intensity rain' || 'very heavy rain' || 'extreme rain'){
+        WeatherIcon= Rain
+    }
+    if(description === 'freezing rain' || 'light intensity shower rain' || 'shower rain' || 'heavy intensity shower rain' || 'ragged shower rain' ){
+        WeatherIcon= ShowerRain
+    }
     if(description === 'few clouds: 11-25%'){
-        icon = require(icons[3])
-    };
+        WeatherIcon= FewClouds
+    }
+    if (main === 'Clear'){
+        WeatherIcon = Clear
+    }
 
-    iconStyle = {backgroundImage: {icon}}
-   // let icons = `http://openweathermap.org/img/wn/${icon}@2x.png`
      if(!error && name) {
         cont = (
             <Fragment>
                 <div className='location'>{name}  {country}</div>
                 <div className='date'>{date}</div>
+                <img alt= ' ' src={ WeatherIcon } />
                 <div className='temp'>temp : {temp}<sup>o</sup>C</div>
                 <div className='wind'>wind speed: {wind}km/h</div>
                 <div className='descripion'>{description}</div>
-                <div style="iconStyle"></div>
+                
             </Fragment>
         )
     }
 
     return(
         <div>
-            {error ? ` ` : cont}
+            {error ? `no weather for ${location} ` : cont}
         </div>
     )
 }
