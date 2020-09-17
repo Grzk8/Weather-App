@@ -3,7 +3,7 @@ import './App.css'
 
 const Form = props => {
     return(
-        <form className='search-box'>
+        <div className='search-box'>
             <input 
             className='search-bar'
             type='text' 
@@ -11,7 +11,7 @@ const Form = props => {
             value={props.location}
             onChange={props.change}
             />
-        </form>
+        </div>
     )
 }
 
