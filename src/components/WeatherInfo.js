@@ -13,10 +13,10 @@ import FewClouds from './assets/few-clouds.png'
 
 const WeatherInfo = (props) => {
 
-    const {date, name, temp, wind, error, location, country, main, description} = props.weather;
+    const {date, name, temp, wind, error, location, country, main, description, pressure, sunrise, sunset} = props.weather;
     let cont = null;
-
-
+    const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
+    const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
     // weather icons and condicions
 
     let WeatherIcon = BrokenClouds;
@@ -54,14 +54,20 @@ const WeatherInfo = (props) => {
             <Fragment>
                 <div className='location'>{name}  {country}</div>
                 <div className='date'>{date}</div>
-                <div>
-                    <div className='temp col'>{temp}<sup>o</sup>C</div>
-                    <div className='col'> <img  alt= ' ' src={ WeatherIcon } /></div>  
+                <div className='weatherDetails'>
+                    <div className='mainDetails'>
+                        <div className='temp col'>{temp}<sup>o</sup>C</div>
+                        <div className='col icon'> <img  alt= ' ' src={ WeatherIcon } /></div>  
+                    </div>
+                    <div className='otherValues'>
+                        <div className='descripion'>{description}</div>
+                        <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
+                        <div className='pressure'>pressure: {pressure} hPa</div>
+                        <div className='sunrise'>sunrise: {sunriseTime}</div>
+                        <div className='sunset'>sunrise: {sunsetTime}</div>
+                    </div>
                 </div>
-                <div className='otherValues'>
-                    <div className='descripion'>{description}</div>
-                    <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
-                </div>
+   
             </Fragment>
         )
     }

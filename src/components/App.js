@@ -15,6 +15,9 @@ class App extends Component {
     main: '',
     description: '',
     icon: '',
+    sunrise: '',
+    sunset: '',
+    pressure: '',
     error: false
   }
 
@@ -49,7 +52,10 @@ componentDidUpdate(prevProps, prevState){
         main: data.weather[0].main,
         description: data.weather[0].description,
         icon: data.weather.id,
-        country: data.sys.country
+        country: data.sys.country,
+        pressure: data.main.pressure,
+        sunrise: data.sys.sunrise,
+        sunset: data.sys.sunset
       }))
     .catch (err => console.log(err));
     this.setState({
