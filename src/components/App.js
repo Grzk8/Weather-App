@@ -91,11 +91,14 @@ componentDidUpdate(prevProps, prevState){
  
     return (
       <div className="App" style={style}>
+        <div className='container'>
           <Form 
-          location={this.state.location} 
-          change={this.handleInputHange}
-          />
-          <WeatherInfo weather={this.state}/>
+            location={this.state.location} 
+            change={this.handleInputHange}
+            />
+            <WeatherInfo weather={this.state}/>
+        </div>
+
       </div>
     );
   }
