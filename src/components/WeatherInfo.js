@@ -64,7 +64,7 @@ const WeatherInfo = (props) => {
                         <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
                         <div className='pressure'>pressure: {pressure} hPa</div>
                         <div className='sunrise'>sunrise: {sunriseTime}</div>
-                        <div className='sunset'>sunrise: {sunsetTime}</div>
+                        <div className='sunset'>sunset: {sunsetTime}</div>
                     </div>
                 </div>
    
