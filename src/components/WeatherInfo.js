@@ -15,7 +15,17 @@ const WeatherInfo = (props) => {
 
     const {date, name, temp, wind, error, location, country, main, description, pressure, sunrise, sunset} = props.weather;
     let cont = null;
-    const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
+ 
+    
+    function convertTime(sunrise){
+        let dt = new Date(sunrise * 1000)
+        let h = dt.getHours()
+        let m = "0" + dt.getMinutes()
+        let t = h + ":" + m.substr(-2)
+        return t
+    }
+    console.log(convertTime(sunrise))
+
     const sunsetTime = new Date(sunset * 1000).toLocaleTimeString();
     // weather icons and condicions
 
@@ -63,7 +73,7 @@ const WeatherInfo = (props) => {
                         <div className='descripion'>{description}</div>
                         <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
                         <div className='pressure'>pressure: {pressure} hPa</div>
-                        <div className='sunrise'>sunrise: {sunriseTime}</div>
+                        <div className='sunrise'>sunrise: {}</div>
                         <div className='sunset'>sunset: {sunsetTime}</div>
                     </div>
                 </div>

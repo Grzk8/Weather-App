@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 const Localtime = (longitude) => {
 
-    const h,m,s;
-    h = getUTCHours();
-    m = getUTCMinutes();
-    s = getUTCSeconds();
-    
-    const timeZone = 0;
+    const time = new Date();
+
+    let h = time.getUTCHours();
+    let m = time.getUTCMinutes();
+    let s = time.getUTCSeconds();
+
+
+    let timeUTC = h + ':' + m + ':' + s;
+    console.log(timeUTC)
+    const tUTC = new Date (timeUTC).toLocaleTimeString();
+
+
+
+
+    let timeZone = 0;
 
     if (longitude >7.5){
         timeZone = 1;
@@ -81,10 +90,12 @@ const Localtime = (longitude) => {
     if (longitude <172.5){
         timeZone = 12;
     }
+    console.log(timeZone);
     
     return (
-        <>
-        </>
+        <Fragment>
+
+        </Fragment>
     )
 }
 
