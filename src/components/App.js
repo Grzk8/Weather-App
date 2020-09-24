@@ -77,24 +77,33 @@ componentDidUpdate(prevProps, prevState){
   render() {
 
     let style = {
-      backgroundColor: 'rgba(218, 112, 214, 0.5)',
+      background: ''
     };
 
     // background change
-    if (this.state.temp < 1) {
-      style.backgroundColor= 'rgba(25, 25, 112)'
+    if (this.state.temp < (-10)) {
+      style.background= 'linear-gradient(180deg, rgba(0,12,189,1) 0%, rgba(71,76,150,1) 24%, rgba(188,192,252,1) 79%)'
     }
+    if (this.state.temp < 1) {
+      style.background= 'linear-gradient(180deg, rgba(20,105,187,1) 0%, rgba(104,149,217,1) 24%, rgba(206,199,236,1) 79%)'
+    }
+    if (this.state.temp > 1) {
+      style.background= 'linear-gradient(180deg, rgba(80,238,20,1) 0%, rgba(145,235,47,1) 24%, rgba(199,249,174,1) 79%)'
+    }    
     if (this.state.temp > 10) {
-      style.backgroundColor= 'rgba(135, 206, 235)'
+      style.background= 'linear-gradient(180deg, rgba(11,70,6,1) 0%, rgba(33,158,34,1) 24%, rgba(97,152,97,1) 79%)'
     }    
     if (this.state.temp > 20) {
-      style.backgroundColor= 'rgba(34, 139, 34)'
-    }    
+      style.background= 'linear-gradient(180deg, rgba(242,240,34,1) 0%, rgba(237,232,77,1) 24%, rgba(255,254,185,1) 79%)'
+    }
     if (this.state.temp > 30) {
-      style.backgroundColor= 'rgba(255, 228, 181)'
-    }    
+      style.background= 'linear-gradient(180deg, rgba(219,111,10,1) 0%, rgba(251,192,135,1) 24%, rgba(251,218,187,1) 79%)'
+    }
+    if (this.state.temp > 40) {
+      style.background= 'linear-gradient(180deg, rgba(241,45,4,1) 0%, rgba(238,145,125,1) 24%, rgba(252,226,220,1) 79%)'
+    }     
     if (this.state.location.length < 1) {
-      style.backgroundColor= 'rgba(218, 112, 214, 0.5)'
+      style.background= "linear-gradient(180deg, rgba(231,2,123,1) 0%, rgba(179,42,112,1) 24%, rgba(232,160,196,1) 79%)"
     }    
  
     return (

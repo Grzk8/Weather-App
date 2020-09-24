@@ -45,7 +45,7 @@ const WeatherInfo = (props) => {
     if(description === 'freezing rain' || 'light intensity shower rain' || 'shower rain' || 'heavy intensity shower rain' || 'ragged shower rain' ){
         WeatherIcon= ShowerRain
     }
-    if(description === 'few clouds' && (time < sunsetTime || time > sunriseTime)){
+    if(description === 'few clouds: 11-25%' && (time < sunsetTime || time > sunriseTime)){
         WeatherIcon= FewClouds
     }
     if (main === 'Clear' && (time < sunsetTime || time > sunriseTime)){
@@ -57,7 +57,7 @@ const WeatherInfo = (props) => {
     if (main === 'Clear' && (time > sunsetTime) || time < sunriseTime){
         WeatherIcon = ClearNight
     }
-    if(description === 'few clouds' && (time > sunsetTime || time < sunriseTime)){
+    if(description === 'few clouds: 11-25%' && (time > sunsetTime || time < sunriseTime)){
         WeatherIcon= FewCloudsNight
     }
     if((description === 'light rain' || 'moderate rain' || 'heavy intensity rain' || 'very heavy rain' || 'extreme rain') && (time > sunsetTime || time < sunriseTime)){
@@ -65,25 +65,33 @@ const WeatherInfo = (props) => {
     }
 
  
+    if(!error && name) {
+        cont = (
+            <Fragment>
+                <div className='location'>{name}  {country}</div>
+                <div className='date'>{date}</div>
+                <div className='weatherDetails'>
+                    <div className='mainDetails'>
+                        <div className='temp col'>{temp}<sup>o</sup>C</div>
+                        <div className='col icon'> <img  alt= ' ' src={ WeatherIcon } /></div>  
+                    </div>
+                    <div className='otherValues'>
+                        <div className='descripion'>{description}</div>
+                        <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
+                        <div className='pressure'>pressure: {pressure} hPa</div>
+                        <div className='sunrise'>sunrise: {sunriseTime}</div>
+                        <div className='sunrise'>sunrise: {}</div>
+                        <div className='sunset'>sunset: {sunsetTime}</div>
+                    </div>
+                </div>
+   
+            </Fragment>
+        )
+    }
     return(
-        <Fragment>
-        <div className='location'>{name}  {country}</div>
-        <div className='date'>{date}</div>
-        <div className='weatherDetails'>
-            <div className='mainDetails'>
-                <div className='temp col'>{temp}<sup>o</sup>C</div>
-                <div className='col icon'> <img  alt= ' ' src={ WeatherIcon } /></div>  
-            </div>
-            <div className='otherValues'>
-                <div className='descripion'>{description}</div>
-                <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
-                <div className='pressure'>pressure: {pressure} hPa</div>
-                <div className='sunrise'>sunrise: {sunriseTime}</div>
-                <div className='sunset'>sunset: {sunsetTime}</div>
-            </div>
+        <div>
+            {error ? ` ` : cont}
         </div>
-
-    </Fragment>
     )
 }
 
