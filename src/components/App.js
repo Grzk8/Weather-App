@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import Form from './Form';
 import WeatherInfo from './WeatherInfo'
-import Localtime from './assets/Localtime';
 
-const time = new Date().toLocaleDateString();
+const dateNow = new Date().toLocaleDateString();
+const timeNow = new Date().toLocaleTimeString(); 
+
 class App extends Component {
   state  = {
     location: '',
     name: '',
     country: '',
     date: '',
+    time: '',
     temp: '',
     wind: '',
     main: '',
@@ -49,7 +51,8 @@ componentDidUpdate(prevProps, prevState){
         error: false,
         location: this.state.location,
         name: data.name,
-        date: time,
+        date: dateNow,
+        time: timeNow,
         temp: data.main.temp.toFixed(0),
         wind: data.wind.speed,
         main: data.weather[0].main,
@@ -102,7 +105,6 @@ componentDidUpdate(prevProps, prevState){
             change={this.handleInputHange}
             />
             <WeatherInfo weather={this.state}/>
-            <Localtime longitude={this.state.lon}/>
         </div>
 
       </div>
