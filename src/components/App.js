@@ -35,7 +35,7 @@ class App extends Component {
 componentDidUpdate(prevProps, prevState){
   if (prevState.location !== this.state.location){
 
-    const API = `http://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=2c401902a18d83e97a3b4870577a0579&units=metric`;
+    const API = `https://api.openweathermap.org/data/2.5/weather?q=${this.state.location}&appid=2c401902a18d83e97a3b4870577a0579&units=metric`;
 
     fetch(API)
     .then(response => { 
