@@ -3,8 +3,13 @@
 }
 .App{
     min-height: 100vh;
+    font-family: 'fa';
 }
-
+@font-face {
+    font-family: 'fa';
+    src: url('../fonts/fa-regular-400.woff2') format('woff2'),
+    url('../fonts/fa-regular-400.woff') format('woff');
+}
 .search-box{
     padding-top: 3em;
     position: absolute;
