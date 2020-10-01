@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './Form';
-import WeatherInfo from './WeatherInfo'
+import WeatherInfo from './WeatherInfo';
+import weatherPic1 from './assets/pc1.jpg';
+import weatherPic2 from './assets/pc2.jpg';
+import weatherPic3 from './assets/pc3.jpg';
+import weatherPic4 from './assets/pc4.jpg';
+import weatherPic5 from './assets/pc5.jpg';
+import weatherPic6 from './assets/pc6.jpg';
+import weatherPic7 from './assets/pc7.jpg';
 
 const dateNow = new Date().toLocaleDateString();
 const timeNow = new Date().toLocaleTimeString(); 
@@ -23,7 +30,8 @@ class App extends Component {
     pressure: '',
     lon: '',
     lat:'',
-    error: false
+    error: false,
+    bgStyle : { }
   }
 
   handleInputHange = e => {
@@ -32,6 +40,21 @@ class App extends Component {
     })
   }
 
+componentDidMount(){
+  const bgArray = [weatherPic1, weatherPic2, weatherPic3, weatherPic4, weatherPic5, weatherPic6, weatherPic7];
+  const randomIndex = Math.floor(Math.random() * bgArray.length);
+  const selectedBg = bgArray[randomIndex];
+
+  this.setState({
+    bgStyle: {
+      backgroundImage: `url(${selectedBg})`,
+      height: "100%",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+    }
+  })
+}
 componentDidUpdate(prevProps, prevState){
   if (prevState.location !== this.state.location){
 
@@ -76,38 +99,9 @@ componentDidUpdate(prevProps, prevState){
 
   render() {
 
-    let style = {
-      background: ''
-    };
 
-    // background change
-    if (this.state.temp < (-10)) {
-      style.background= 'linear-gradient(180deg, rgba(0,12,189,1) 0%, rgba(71,76,150,1) 24%, rgba(188,192,252,1) 79%)'
-    }
-    if (this.state.temp < 1) {
-      style.background= 'linear-gradient(180deg, rgba(20,105,187,1) 0%, rgba(104,149,217,1) 24%, rgba(206,199,236,1) 79%)'
-    }
-    if (this.state.temp > 1) {
-      style.background= 'linear-gradient(180deg, rgba(80,238,20,1) 0%, rgba(145,235,47,1) 24%, rgba(199,249,174,1) 79%)'
-    }    
-    if (this.state.temp > 10) {
-      style.background= 'linear-gradient(180deg, rgba(11,70,6,1) 0%, rgba(33,158,34,1) 24%, rgba(97,152,97,1) 79%)'
-    }    
-    if (this.state.temp > 20) {
-      style.background= 'linear-gradient(180deg, rgba(242,240,34,1) 0%, rgba(237,232,77,1) 24%, rgba(255,254,185,1) 79%)'
-    }
-    if (this.state.temp > 30) {
-      style.background= 'linear-gradient(180deg, rgba(219,111,10,1) 0%, rgba(251,192,135,1) 24%, rgba(251,218,187,1) 79%)'
-    }
-    if (this.state.temp > 40) {
-      style.background= 'linear-gradient(180deg, rgba(241,45,4,1) 0%, rgba(238,145,125,1) 24%, rgba(252,226,220,1) 79%)'
-    }     
-    if (this.state.location.length < 1) {
-      style.background= "linear-gradient(180deg, rgba(231,2,123,1) 0%, rgba(179,42,112,1) 24%, rgba(232,160,196,1) 79%)"
-    }    
- 
     return (
-      <div className="App" style={style}>
+      <div className="App" style={this.state.bgStyle}>
         <div className='container'>
           <Form 
             location={this.state.location} 

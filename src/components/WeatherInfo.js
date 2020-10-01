@@ -16,7 +16,7 @@ import RainNight from './assets/rain-night.png'
 
 const WeatherInfo = (props) => {
 
-    const {date, name, temp, wind, error, location, country, main, description, pressure, time, sunrise, sunset} = props.weather;
+    const {date, name, temp, wind, error, country, main, description, pressure, time, sunrise, sunset} = props.weather;
     let cont = null;
  
     const sunriseTime = new Date(sunrise * 1000).toLocaleTimeString();
@@ -48,13 +48,19 @@ const WeatherInfo = (props) => {
     if(description === 'few clouds: 11-25%' && (time < sunsetTime || time > sunriseTime)){
         WeatherIcon= FewClouds
     }
-    if (main === 'Clear' && (time < sunsetTime || time > sunriseTime)){
+    if (main === 'Clear' && (time < sunsetTime )){
+        WeatherIcon = Clear
+    }
+    if (main === 'Clear' && (time > sunriseTime)){
         WeatherIcon = Clear
     }
     if (main === 'Clouds'){
         WeatherIcon= Clouds
     }
-    if (main === 'Clear' && (time > sunsetTime) || time < sunriseTime){
+    if (main === 'Clear' && (time > sunsetTime)){
+        WeatherIcon = ClearNight
+    }
+    if (main === 'Clear' && (time < sunriseTime)){
         WeatherIcon = ClearNight
     }
     if(description === 'few clouds: 11-25%' && (time > sunsetTime || time < sunriseTime)){
@@ -73,11 +79,11 @@ const WeatherInfo = (props) => {
                 <div className='weatherDetails'>
                     <div className='mainDetails'>
                         <div className='temp col'>{temp}<sup>o</sup>C</div>
-                        <div className='col icon'> <img  alt= ' ' src={ WeatherIcon } /></div>  
+                        <div className='col icon'> <img  alt=' ' src={ WeatherIcon } /></div>  
                     </div>
                     <div className='otherValues'>
                         <div className='descripion'>{description}</div>
-                        <div className='wind'>wind speed: <bold>{wind}km/h</bold></div>
+                        <div className='wind'>wind speed: {wind}km/h</div>
                         <div className='pressure'>pressure: {pressure} hPa</div>
                         <div className='sunrise'>sunrise: {sunriseTime}</div>
                         <div className='sunset'>sunset: {sunsetTime}</div>

@@ -4,6 +4,7 @@
 .App{
     min-height: 100vh;
 }
+
 .search-box{
     padding-top: 3em;
     position: absolute;

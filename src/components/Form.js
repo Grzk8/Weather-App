@@ -7,7 +7,7 @@ const Form = props => {
             <input 
             className='search-bar'
             type='text' 
-            placeholder= 'Search...'
+            placeholder='Search...'
             value={props.location}
             onChange={props.change}
             />
