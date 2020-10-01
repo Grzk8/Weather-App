@@ -1,5 +1,7 @@
-#INFO
-Weather App
-#open
+# INFO
+Weather App - enter city name to view the current weather.
+This App was created in React with fetch.
+Weather data taken from: https://openweathermap.org/.
 
-https://grzk8.github.io/Weather-App/
+# Open
+live - https://grzk8.github.io/Weather-App/
